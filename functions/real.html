@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise Example</title>
+</head>
+<body>
+
+  <h2>User Data</h2>
+  <button onclick="loadUser()">Load User</button>
+  <p id="status"></p>
+
+  <h1 style="text-align: center;">User data Loading</h1>
+  <button onclick="loadData()">Load Data</button>
+  <p id="showdata"></p>
+
+
+  <script>
+    //async and await with promise example
+    async function getData(){
+      return new Promise((resolve, reject)=>{
+        document.querySelector('#showdata').textContent = 'loading';
+        setTimeout(()=>{
+          let error = false;
+          if(!error){
+            resolve("Data loaded successfully");
+          }else{
+            reject("Data loaded failed");
+          }
+        },2000);
+      })
+    }
+
+    function loadData(){
+      getData().then(res=> document.querySelector('#showdata').textContent = res)
+      .catch(err=> document.querySelector('#showdata').textContent = err);
+    }
+
+    loadData();
+
+
+    //h2 load data
+    function getUserData() {
+      return new Promise((resolve, reject) => {
+        document.getElementById("status").textContent = "Loading...";
+
+        setTimeout(() => {
+          let success = true; // change to false to test error
+
+          if (success) {
+            resolve({ name: "Ishaq", age: 22 });
+          } else {
+            reject("Failed to load data");
+          }
+        }, 2000);
+      });
+    }
+
+    // function loadUser() {
+    //   getUserData()
+    //     .then(user => {
+    //       document.getElementById("status").innerHTML =
+    //         `Name: ${user.name} <br/> Age: ${user.age}`;
+    //     })
+    //     .catch(error => {
+    //       document.getElementById("status").textContent = error;
+    //     });
+    // }
+
+    //async function with
+     async function loadUser() {
+    const status = document.getElementById("status");
+    status.textContent = "Loading...";
+
+    try {
+      const user = await getUserData();
+      status.textContent = `Name: ${user.name}, Age: ${user.age}`;
+    } catch (error) {
+      status.textContent = error;
+    }
+  }
+
+
+  //async function syntax
+  // async function hello(){
+  //   return "Hello worlds";
+  // }
+  // hello().then(res=> document.querySelector('#showStatus').textContent = res);
+
+  
+  let num = parseFloat("3.14");
+  console.log(num);
+
+  let age = prompt("Enter your age");
+  if(parseInt(age) >= 18){
+    alert("Login is allowed");
+  }else{
+    alert("not allowed");
+  }
+
+  </script>
+
+</body>
+</html>

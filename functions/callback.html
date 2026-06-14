@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //callback function example
+    const data = [
+      { name: "Ishaq", age: 21 },
+      { name: "Ali", age: 25 }
+    ]
+
+    function getdata() {
+      setTimeout(() => {
+        let output = "";
+        data.forEach((index) => {
+          output += `<li>${index.name} is ${index.age} years old</li>`;
+        })
+        document.body.innerHTML = output;
+      }, 1000);
+    }
+    getdata();
+
+    //callback function example
+    // function createData(newdata, callback) {
+    //   setTimeout(() => {
+    //     data.push(newdata);
+    //     callback();
+    //     // getdata(); // Call getdata() after creating new data
+    //   }, 1000);
+    // }
+    // createData({ name: "Usman", age: 22 }, getdata);
+
+    //promise example
+    function createData(newdata){
+      return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+          data.push(newdata);
+          let error = false;
+          if(!error){
+            resolve();
+          }else{
+            reject("Error: Something went wrong");
+          }
+        })
+      })
+    }
+    // createData({name:"Khaksar", age:28}).then(getdata);
+
+    
+    // Async and Await example
+    async function start(){
+      await createData({name:"Khaksar", age:28});
+      getdata();
+    }
+    start();
+
+    //forEach example
+    // const arr = [10, 20, 30, 40, 50];
+    // let output = "";
+    // arr.forEach(val => {
+    //   output += val + "<br>";
+    // });
+    // document.body.innerHTML = output;
+
+
+    // function showValue(){
+    //   arr.forEach((val)=>{
+    //     document.body.innerHTML = val;
+    //   })
+    // }
+    // showValue();
+  </script>
+
+</body>
+
+</html>

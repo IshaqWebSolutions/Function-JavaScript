@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return Statement</title>
+</head>
+<body>
+  <input type="number" name="" id="num" placeholder="Enter a num to check even or odd">
+  <button onclick="checkEvenorOdd()">Check Even Odd</button>
+  <p id="showEvenOdd"></p>
+
+  <script>
+
+    //return statment example
+    function generateRandomNumber(){
+      let randomNumber = Math.random();
+      let randomMove = Math.random() > 0.5 ? 'heads' : 'tails';
+      return randomMove;
+    }
+
+    let result = generateRandomNumber();
+    console.log(generateRandomNumber());
+    console.log(generateRandomNumber());
+    console.log(generateRandomNumber());
+    console.log(generateRandomNumber());
+    console.log(result);
+
+    //second example
+    function checkEvenorOdd(){
+      let number = document.querySelector('#num').value;
+      if(number % 2 == 0){
+        document.querySelector('#showEvenOdd').textContent = "Even";
+        return "Even";
+      }else{
+        document.querySelector('#showEvenOdd').textContent = "Odd";
+        return "Odd";
+      }
+    }
+    checkEvenorOdd();
+
+    //Return Check Drive status
+    function checkDriveStatus(){
+      let age = 18;
+      if(age > 18){
+        return 'You can drive';
+      }else{
+        return 'You cannot drive';
+      }
+    }
+    console.log(checkDriveStatus());
+
+  </script>
+</body>
+</html>

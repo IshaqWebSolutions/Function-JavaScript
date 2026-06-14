@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions</title>
+</head>
+
+<body>
+  <div>
+    <input type="text" name="" id="" placeholder="Show Txt" onkeyup="Show(value)">
+    <p id="show"></p>
+  </div>
+  <div>
+    <input type="text" name="" id="shirt" placeholder="Enter your product" onkeyup="Search(value)">
+    <p id="para"></p>
+  </div>
+  <div>
+    <input type="text" name="" id="showtxt" placeholder="enter something" onkeyup="ShowText(value)">
+    <p id="showpara"></p>
+  </div>
+  <input type="text" onkeydown="getKey(event)">
+
+  <input type="text" id="search" placeholder="Search product">
+  <button id="btn">Add to Cart</button>
+
+  <input type="text" id="name">
+  <button onclick="showName()">Show</button>
+
+  <script>
+    function showName() {
+      let name = document.getElementById("name").value;
+      alert("Hello " + name);
+    }
+
+    document.getElementById("search").addEventListener("keyup", function () {
+      console.log("Searching: " + this.value);
+    });
+
+    document.getElementById("btn").addEventListener("click", function () {
+      alert("Product Added to Cart");
+    });
+
+    window.addEventListener("load", function () {
+      console.log("Page Loaded");
+    });
+
+
+    function getKey(e) {
+      console.log("Key pressed: " + e.key);
+    }
+
+
+    function ShowText(value) {
+      document.querySelector('#showpara').innerText = value;
+    }
+
+    function Search(value) {
+      let product = 'red shirt';
+
+      if (product.includes(value)) {
+        document.querySelector('#para').innerText = 'Product Found';
+        document.querySelector('#para').style.color = 'black';
+      } else {
+        document.querySelector('#para').innerText = 'Product Not Found';
+        document.querySelector('#para').style.color = 'red';
+      }
+    }
+
+    function Show(value){
+      document.getElementById('show').innerText = value;
+    }
+  </script>
+
+</body>
+
+</html>

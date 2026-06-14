@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Bat Ball Game</h1>
+  <button onclick="
+  let computerChoice = generateComputerChoice();
+  let result;
+  if(computerChoice == 'bat'){
+    result = 'its Tie';
+  }else if(computerChoice == 'ball'){
+    result = 'You Won';
+  }else{
+    result = 'You lose';
+  }
+  alert(`You choose Bat, Computer choose ${computerChoice}. ${result}`)
+  ">Bat</button>
+
+  <button onclick="
+  let computerChoice = generateComputerChoice();
+  let result;
+  if(computerChoice == 'bat'){
+    result = 'you lose';
+  }else if(computerChoice == 'ball'){
+    result = 'its Tie';
+  }else{
+    result = 'you won';
+  }
+  alert(`You choose Ball, Computer choose ${computerChoice}. ${result}`)
+  ">Ball</button>
+
+  <button onclick="
+  let computerChoice = generateComputerChoice();
+  let result;
+  if(computerChoice == 'bat'){
+    result = 'you lose';
+  }else if(computerChoice == 'ball'){
+    result = 'You Won';
+  }else{
+    result = 'its Tie';
+  }
+  alert(`You choose Stump, Computer choose ${computerChoice}. ${result}`)
+  ">Stump</button>
+
+
+  <script>
+    function generateComputerChoice(){
+      let random = Math.random() * 3;
+      if(random > 0 && random <= 1){
+        return 'bat';
+      }else if(random > 1 && random <=2){
+        return 'ball';
+      }else{
+        return 'stump';
+      }
+    }
+  </script>
+  
+</body>
+</html>
